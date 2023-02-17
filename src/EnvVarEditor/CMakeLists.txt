@@ -3,11 +3,14 @@ cmake_minimum_required(VERSION 3.10)
 set(CURRENT_PROJ_NAME EnvVarEditor)
 # set(CMAKE_MFC_FLAG 1)
 
+set(CMAKE_CXX_STANDARD 20)
+
 FILE(GLOB SRC_HEADER "./*.h")
 FILE(GLOB SRC_CPP "./*.cpp")
 FILE(GLOB SRC_RC "./*.rc")
 
 set(CMAKE_PREFIX_PATH ${BOOST_DIR})
+ 
 find_package(Boost 1.81 REQUIRED)
 
 add_definitions(-DUNICODE -D_UNICODE)
