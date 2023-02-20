@@ -3,18 +3,18 @@
 #include "pathutil.h"
 #include <ShlObj.h>
 
-__TSTR_FUNC__ int startAsAdmin(const TStr &exe, const TStr &params);
+__TSTR_FUNC__ int start_as_admin(const TStr &exe, const TStr &params);
 
-int restartAsAdmin(bool waitForExit = true);
+int restart_as_admin(bool waitForExit = true);
 
-__TSTR_FUNC__ int startAsAdmin(const TStr &exe, const TStr &params)
+__TSTR_FUNC__ int start_as_admin(const TStr &exe, const TStr &params)
 {
     std::wstring wexe = tstr2Wstring(exe);
     std::wstring wparams = tstr2Wstring(params);
     return 0;
 }
 
-int restartAsAdmin(bool waitForExit)
+int restart_as_admin(bool waitForExit)
 {
     TCHAR exe[MAX_PATH];
     ZeroMemory(exe, MAX_PATH);

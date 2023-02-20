@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include "strutil.h"
 
+__TSTR_FUNC__ bool reg_key_exists(HKEY hkey, const TStr &subkey);
 __TSTR_FUNC__ bool reg_value_exists(HKEY hkey, const TStr &subkey, const TStr &name);
 __TSTR_FUNC__ TStr reg_str_value(HKEY hkey, const TStr &subkey, const TStr &name, DWORD maxlen = MAX_PATH);
 __TSTR_FUNC__ void reg_str_value_set(HKEY hkey, const TStr &subkey, const TStr &name, const TStr &val, DWORD valType = REG_SZ);
@@ -11,8 +12,8 @@ __TSTR_FUNC__ bool reg_value_exists(HKEY hkey, const TStr &subkey, const TStr &n
 {
     HKEY hk_sub;
     LSTATUS lret;
-    std::wstring wsubkey = tstr2Wstring(subkey);
-    std::wstring wname = tstr2Wstring(name);
+    std::wstring wsubkey = tstr_to_wstr(subkey);
+    std::wstring wname = tstr_to_wstr(name);
     if (ERROR_SUCCESS == (lret == RegOpenKeyEx(hkey, wsubkey.data(), 0, KEY_READ, &hk_sub)))
     {
         wchar_t szbuf[1] = {0};
@@ -31,8 +32,8 @@ __TSTR_FUNC__ TStr reg_str_value(HKEY hkey, const TStr &subkey, const TStr &name
 {
     HKEY hk_sub;
     LSTATUS lret;
-    std::wstring wsubkey = tstr2Wstring(subkey);
-    std::wstring wname = tstr2Wstring(name);
+    std::wstring wsubkey = tstr_to_wstr(subkey);
+    std::wstring wname = tstr_to_wstr(name);
     std::wstring result;
     if (ERROR_SUCCESS == (lret = RegOpenKeyEx(hkey, wsubkey.data(), 0, KEY_READ, &hk_sub)))
     {
@@ -47,14 +48,14 @@ __TSTR_FUNC__ TStr reg_str_value(HKEY hkey, const TStr &subkey, const TStr &name
         delete[] szbuf;
         RegCloseKey(hk_sub);
     }
-    return wstring2TStr<TStr>(result);
+    return tstr_to_wstr<TStr>(result);
 }
 __TSTR_FUNC__ void reg_str_value_set(HKEY hkey, const TStr &subkey, const TStr &name, const TStr &val, DWORD valType)
 {
     LSTATUS lret;
-    std::wstring wsubkey = tstr2Wstring(subkey);
-    std::wstring wname = tstr2Wstring(name);
-    std::wstring wval = tstr2Wstring(val);
+    std::wstring wsubkey = tstr_to_wstr(subkey);
+    std::wstring wname = tstr_to_wstr(name);
+    std::wstring wval = tstr_to_wstr(val);
 
     if (ERROR_SUCCESS == (lret = RegSetKeyValue(hkey, wsubkey.data(), wname.data(), REG_SZ, wval.data(), wval.length() * sizeof(wchar_t))))
     {
