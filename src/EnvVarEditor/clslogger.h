@@ -46,7 +46,7 @@ __TSTR_FUNC__ void clslog(const TStr &msg, MessageType type)
     }
     HANDLE hnd = GetStdHandle(output);
     SetConsoleTextAttribute(hnd, attr);
-    std::cout << typeName << tstr2String(msg) << std::endl;
+    std::cout << typeName << tstr_to_str(msg) << std::endl;
     SetConsoleTextAttribute(hnd, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 }
 
