@@ -9,7 +9,7 @@ FILE(GLOB SRC_HEADER "./*.h")
 FILE(GLOB SRC_CPP "./*.cpp")
 FILE(GLOB SRC_RC "./*.rc")
 
-set(CMAKE_PREFIX_PATH ${BOOST_DIR})
+set(CMAKE_PREFIX_PATH $ENV{LIB_BOOST_DIR})
  
 find_package(Boost 1.81 REQUIRED)
 
