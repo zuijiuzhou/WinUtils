@@ -37,15 +37,17 @@ __TSTR_FUNC__ TStr reg_str_value(HKEY hkey, const TStr &subkey, const TStr &name
     std::wstring result;
     if (ERROR_SUCCESS == (lret = RegOpenKeyEx(hkey, wsubkey.data(), 0, KEY_READ, &hk_sub)))
     {
-        wchar_t *szbuf = new wchar_t[maxlen]{0};
-        DWORD valType = REG_EXPAND_SZ;
-        DWORD valSize = maxlen * sizeof(wchar_t);
-
-        if (ERROR_SUCCESS == (lret = RegQueryValueEx(hk_sub, wname.data(), 0, &valType, (LPBYTE)szbuf, &valSize)))
+        DWORD valType;
+        DWORD valSize;
+        if (ERROR_SUCCESS == (lret = RegQueryValueEx(hk_sub, wname.data(), 0, &valType, 0, &valSize)))
         {
-            result.assign(szbuf);
+            wchar_t *szbuf = new wchar_t[valSize + 1]{0};
+            if (ERROR_SUCCESS == (lret = RegQueryValueEx(hk_sub, wname.data(), 0, &valType, (LPBYTE)szbuf, &valSize)))
+            {
+                result.assign(szbuf);
+            }
+            delete[] szbuf;
         }
-        delete[] szbuf;
         RegCloseKey(hk_sub);
     }
     return tstr_to_wstr<TStr>(result);
@@ -81,4 +83,4 @@ __TSTR_FUNC__ void reg_value_del(HKEY hkey, const TStr &subkey, const TStr &name
         RegCloseKey(hk_sub);
     }
     return false;
-} 
+}
