@@ -78,9 +78,11 @@ __TSTR_FUNC__ void reg_value_del(HKEY hkey, const TStr &subkey, const TStr &name
         if (ERROR_SUCCESS == (lret = RegDeleteValue(hk_sub, wname.data())))
         {
             RegCloseKey(hk_sub);
-            return true;
         }
         RegCloseKey(hk_sub);
     }
-    return false;
+    if (ERROR_SUCCESS != lret)
+    {
+        throw std::exception("faild to delete the env value");
+    }
 }
