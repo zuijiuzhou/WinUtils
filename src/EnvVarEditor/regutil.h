@@ -64,7 +64,7 @@ __TSTR_FUNC__ void reg_str_value_set(HKEY hkey, const TStr &subkey, const TStr &
     }
     else
     {
-        throw std::exception("faild to set the env value");
+        throw std::exception("Failed to set the env value");
     }
 }
 __TSTR_FUNC__ void reg_value_del(HKEY hkey, const TStr &subkey, const TStr &name)
@@ -83,6 +83,6 @@ __TSTR_FUNC__ void reg_value_del(HKEY hkey, const TStr &subkey, const TStr &name
     }
     if (ERROR_SUCCESS != lret)
     {
-        throw std::exception("faild to delete the env value");
+        throw std::exception("Failed to delete the env value");
     }
 }
