@@ -27,7 +27,8 @@ EnvVarEditor
 
 ## Command: <i>get</i>
 ### Usage: 
-<pre>EnvVarEditor get [--help] [--version] [--global] [--name VAR] [--split] [--slim] [--sort-asc] [--sort-desc]</pre>
+<pre>EnvVarEditor get [--help] [--version] [--global] [--name VAR] 
+    [--split] [--slim] [--sort-asc] [--sort-desc]</pre>
 
 ### Optional arguments:
 <pre>
