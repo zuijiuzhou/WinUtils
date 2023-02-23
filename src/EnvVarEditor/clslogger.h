@@ -29,7 +29,6 @@ __TSTR_FUNC__ void clslog(const TStr &msg, MessageType type)
     case MT_INFO:
         output = STD_OUTPUT_HANDLE;
         attr = FOREGROUND_INTENSITY | FOREGROUND_GREEN;
-        typeName = "INFO:";
         break;
     case MT_WARN:
         output = STD_OUTPUT_HANDLE;
