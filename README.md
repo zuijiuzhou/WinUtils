@@ -54,8 +54,8 @@ EnvVarEditor
 ## Command: set
 ### Usage: 
 <pre>
-    EnvVarEditor set [--help] [--version] [--global] [--name VAR] [--split] [--slim] [--sort-asc] [--sort-desc] 
-        [--value VAR] [--value+ VAR] [--value- VAR] [--save]
+    EnvVarEditor set [--help] [--version] [--global] [--name VAR] [--split] [--slim] 
+        [--sort-asc] [--sort-desc] [--value VAR] [--value+ VAR] [--value- VAR] [--save]
 </pre>
 
 ### Optional arguments:
