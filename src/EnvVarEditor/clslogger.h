@@ -12,8 +12,9 @@ enum MessageType
 };
 
 __TSTR_FUNC__ void clslog(const TStr &msg, MessageType type);
-void clslog(const char *szMsg, MessageType type);
-void clslog(const wchar_t *szMsg, MessageType type);
+void clslog(const char *sz_msg, MessageType type);
+void clslog(const wchar_t *sz_msg, MessageType type);
+void clserr(const char *sz_err, const char *sz_inner_err);
 
 __TSTR_FUNC__ void clslog(const TStr &msg, MessageType type)
 {
@@ -49,11 +50,17 @@ __TSTR_FUNC__ void clslog(const TStr &msg, MessageType type)
     SetConsoleTextAttribute(hnd, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 }
 
-void clslog(const char *szMsg, MessageType type)
+void clslog(const char *sz_msg, MessageType type)
 {
-    clslog<std::string>(szMsg, type);
+    clslog<std::string>(sz_msg, type);
 }
-void clslog(const wchar_t *szMsg, MessageType type)
+void clslog(const wchar_t *sz_msg, MessageType type)
 {
-    clslog<std::wstring>(szMsg, type);
+    clslog<std::wstring>(sz_msg, type);
+}
+void clserr(const char *sz_err, const char *sz_inner_err)
+{
+    int len = strlen(sz_err) + strlen(sz_inner_err) + 1;
+    char* buffer = new char[len]{0};
+    
 }

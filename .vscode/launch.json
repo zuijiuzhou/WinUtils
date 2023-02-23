@@ -9,7 +9,7 @@
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/bin/Debug/EnvVarEditor.exe",
-            "args": ["get", "-n", "PATH", "-sa", "-x", "-r"],
+            "args": ["export"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
