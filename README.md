@@ -99,7 +99,7 @@ EnvVarEditor
   -h, --help    shows help message and exits
   -v, --version prints version information and exits
   -g, --global  此开关控制相关操作作用到系统环境变量
-  -n, --name    环境变量名称 [default: "PATH"]
+  -n, --name    环境变量名称 [required]
 </pre>
 ### Examples:
 1、删除名称为'JAVA_HOME'的系统变量
