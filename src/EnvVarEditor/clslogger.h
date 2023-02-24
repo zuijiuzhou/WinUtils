@@ -60,7 +60,12 @@ void clslog(const wchar_t *sz_msg, MessageType type)
 }
 void clserr(const char *sz_err, const char *sz_inner_err)
 {
-    int len = strlen(sz_err) + strlen(sz_inner_err) + 1;
-    char* buffer = new char[len]{0};
-    
+    if (0 == sz_inner_err || 0 == strlen(sz_inner_err))
+    {
+        clslog(sz_err, MT_ERR);
+    }
+    else
+    {
+        clslog(tstr_format<std::string>("%s(%s)", sz_err, sz_inner_err), MT_ERR);
+    }
 }
