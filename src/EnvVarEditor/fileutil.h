@@ -21,8 +21,8 @@ TextEncoding file_get_encoding(const char *buf, size_t lenBuf)
     TextEncoding te = TE_UNKNOW;
 
     unsigned char c0 = *buf,
-         c1 = *(buf+1),
-         c2 = *(buf+2);
+                  c1 = *(buf + 1),
+                  c2 = *(buf + 2);
     if (lenBuf >= 3 && c0 == 0xef && c1 == 0xbb && c2 == 0xbf)
     {
         te = TE_UTF8;

@@ -13,7 +13,7 @@ __TSTR_FUNC__ std::map<TStr, TStr> evar_list(bool global = false);
 
 __TSTR_FUNC__ TStr evar_get(const TStr &name, bool global)
 {
-    TStr val = reg_get_str<TStr>(global ? HKEY_LOCAL_MACHINE : HKEY_CURRENT_USER, str_to_tstr<TStr>(global ? __HKEY_GLOBAL_ENV__ : __HKEY_USER_ENV__), name, 2048ul);
+    TStr val = reg_get_str<TStr>(global ? HKEY_LOCAL_MACHINE : HKEY_CURRENT_USER, str_to_tstr<TStr>(global ? __HKEY_GLOBAL_ENV__ : __HKEY_USER_ENV__), name);
     return val;
 }
 __TSTR_FUNC__ bool evar_exists(const TStr &name, bool global)

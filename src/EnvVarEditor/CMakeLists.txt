@@ -12,15 +12,16 @@ FILE(GLOB SRC_HEADER "./*.h")
 FILE(GLOB SRC_CPP "./*.cpp")
 FILE(GLOB SRC_RC "./*.rc")
 
-option(OPT_BOOST_ENABLED "是否启用BOOST" ON)
+option(OPT_BOOST_ENABLED "是否启用BOOST" OFF)
 
-# set(OPT_BOOST_ENABLED ON)
+set(OPT_BOOST_ENABLED OFF)
 
 
 # add_definitions(-D_AFXDLL)
 
 add_executable(${CURRENT_PROJ_NAME} ${SRC_HEADER} ${SRC_CPP} ${SRC_RC})
 set_property(TARGET ${CURRENT_PROJ_NAME} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+
 if(OPT_BOOST_ENABLED)
 set(CMAKE_PREFIX_PATH $ENV{LIB_BOOST_DIR})
 find_package(Boost 1.81 REQUIRED)
