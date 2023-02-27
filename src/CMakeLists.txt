@@ -7,13 +7,15 @@ include_directories(${THIRD_ARGPARSE_INCLUDE_DIR})
 
 #一般通过命令行参数指定 --config Debug
 # 未指定编译模式时默认Release
-if(NOT CMAKE_BUILD_TYPE)
-set(CMAKE_BUILD_TYPE "Release")
-endif()
+# if(NOT CMAKE_BUILD_TYPE)
+# message("___RELEASE___")
+# set(CMAKE_BUILD_TYPE "Release")
+# endif()
 
-if(CMAKE_BUILD_TYPE STREQUAL "DEBUG")
-add_definitions(-DDEBUG -D_DEBUG)
-endif()
+# if(CMAKE_BUILD_TYPE STREQUAL "DEBUG")
+# message("___DEBUG___")
+# add_definitions(-DDEBUG -D_DEBUG)
+# endif()
 
 add_subdirectory(EnvVarEditor)
 

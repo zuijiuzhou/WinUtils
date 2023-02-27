@@ -7,7 +7,7 @@
 
 #define __PATH_FUNC__ __TSTR_FUNC__
 
-#define __PATH_SEPERATOR__ ";"
+#define __PATH_SEPERATOR__ ';'
 
 __PATH_FUNC__ std::vector<TStr> path_split(const TStr &data);
 __PATH_FUNC__ int path_compare(const TStr &left, const TStr &right);
@@ -17,10 +17,9 @@ __PATH_FUNC__ TStr path_norm(const TStr &path);
 __PATH_FUNC__ std::vector<TStr> path_split(const TStr &data)
 {
     // std::wcout << __FUNCTIONW__ << std::endl;
-    std::basic_regex<typename TStr::value_type> reg(__TSTR__(__PATH_SEPERATOR__));
-    std::regex_token_iterator<typename TStr::const_iterator> iter(data.begin(), data.end(), reg, (int)_TRUNCATE);
-    std::vector<TStr> items = std::vector<TStr>(iter, std::regex_token_iterator<typename TStr::const_iterator>());
-    return items;
+    std::vector<TStr> ret;
+    tstr_split(data, __PATH_SEPERATOR__, ret);
+    return ret;
 }
 __PATH_FUNC__ int path_compare(const TStr &left, const TStr &right)
 {
@@ -31,7 +30,7 @@ __PATH_FUNC__ int path_compare(const TStr &left, const TStr &right)
 }
 __PATH_FUNC__ TStr path_join(std::vector<TStr> items)
 {
-    return tstr_join<TStr>(items, __TSTR__(__PATH_SEPERATOR__));
+    return tstr_join<TStr>(items, str_to_tstr<TStr>(std::string(1, __PATH_SEPERATOR__)));
 }
 __PATH_FUNC__ TStr path_norm(const TStr &path)
 {

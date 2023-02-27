@@ -5,9 +5,9 @@
 
 __TSTR_FUNC__ bool reg_key_exists(HKEY hkey, const TStr &subkey);
 __TSTR_FUNC__ bool reg_value_exists(HKEY hkey, const TStr &subkey, const TStr &name);
-__TSTR_FUNC__ void reg_value_del(HKEY hkey, const TStr &subkey, const TStr &name);
-__TSTR_FUNC__ TStr reg_str_value(HKEY hkey, const TStr &subkey, const TStr &name, DWORD maxlen = MAX_PATH);
-__TSTR_FUNC__ void reg_str_value_set(HKEY hkey, const TStr &subkey, const TStr &name, const TStr &val, DWORD valType = REG_SZ);
+__TSTR_FUNC__ void reg_del_value(HKEY hkey, const TStr &subkey, const TStr &name);
+__TSTR_FUNC__ TStr reg_get_str(HKEY hkey, const TStr &subkey, const TStr &name, DWORD maxlen = MAX_PATH);
+__TSTR_FUNC__ void reg_set_str(HKEY hkey, const TStr &subkey, const TStr &name, const TStr &val, DWORD valType = REG_SZ);
 
 __TSTR_FUNC__ bool reg_value_exists(HKEY hkey, const TStr &subkey, const TStr &name)
 {
@@ -28,7 +28,7 @@ __TSTR_FUNC__ bool reg_value_exists(HKEY hkey, const TStr &subkey, const TStr &n
     }
     return false;
 }
-__TSTR_FUNC__ TStr reg_str_value(HKEY hkey, const TStr &subkey, const TStr &name, DWORD maxlen)
+__TSTR_FUNC__ TStr reg_get_str(HKEY hkey, const TStr &subkey, const TStr &name, DWORD maxlen)
 {
     HKEY hk_sub;
     LSTATUS lret;
@@ -52,7 +52,7 @@ __TSTR_FUNC__ TStr reg_str_value(HKEY hkey, const TStr &subkey, const TStr &name
     }
     return tstr_to_wstr<TStr>(result);
 }
-__TSTR_FUNC__ void reg_str_value_set(HKEY hkey, const TStr &subkey, const TStr &name, const TStr &val, DWORD valType)
+__TSTR_FUNC__ void reg_set_str(HKEY hkey, const TStr &subkey, const TStr &name, const TStr &val, DWORD valType)
 {
     LSTATUS lret;
     std::wstring wsubkey = tstr_to_wstr(subkey);
@@ -67,7 +67,7 @@ __TSTR_FUNC__ void reg_str_value_set(HKEY hkey, const TStr &subkey, const TStr &
         throw std::exception("Failed to set the env value");
     }
 }
-__TSTR_FUNC__ void reg_value_del(HKEY hkey, const TStr &subkey, const TStr &name)
+__TSTR_FUNC__ void reg_del_value(HKEY hkey, const TStr &subkey, const TStr &name)
 {
     HKEY hk_sub;
     LSTATUS lret;
