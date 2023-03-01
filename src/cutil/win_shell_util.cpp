@@ -1,16 +1,7 @@
-#pragma once
+#include "win_shell_util.h"
 
-#include "pathutil.h"
-#include <ShlObj.h>
-
-__TSTR_FUNC__ int start_as_admin(const TStr &exe, const TStr &params);
-
-int restart_as_admin(bool waitForExit = true);
-
-__TSTR_FUNC__ int start_as_admin(const TStr &exe, const TStr &params)
+int start_as_admin(const std::wstring &exe, const std::wstring &params)
 {
-    std::wstring wexe = tstr2Wstring(exe);
-    std::wstring wparams = tstr2Wstring(params);
     return 0;
 }
 

@@ -1,16 +1,6 @@
-#pragma once
-#ifndef __FILE_UTIL_H__
-#define __FILE_UTIL_H__
-#include <io.h>
-#include <assert.h>
-#include <vector>
-#include <memory>
-#include <string>
-#include <codecvt>
-#include "strutil.h"
+#include <sstream>
+#include "std_io_file_util.h"
 
-TextEncoding file_get_encoding(const char *buf, size_t lenBuf);
-std::vector<std::wstring> file_all_lines(FILE *pFile);
 
 TextEncoding file_get_encoding(const char *buf, size_t lenBuf)
 {
@@ -144,4 +134,3 @@ std::vector<std::wstring> file_all_lines(FILE *pFile)
     }
     return lines;
 }
-#endif

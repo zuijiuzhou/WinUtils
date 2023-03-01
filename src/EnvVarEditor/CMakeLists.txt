@@ -5,6 +5,7 @@ set(CURRENT_PROJ_NAME EnvVarEditor)
 
 set(CMAKE_CXX_STANDARD 20)
 add_definitions(-DUNICODE -D_UNICODE)
+add_definitions(-DCUITL_STATIC)
 add_definitions(-D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS)
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
@@ -21,7 +22,7 @@ set(OPT_BOOST_ENABLED OFF)
 
 add_executable(${CURRENT_PROJ_NAME} ${SRC_HEADER} ${SRC_CPP} ${SRC_RC})
 set_property(TARGET ${CURRENT_PROJ_NAME} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-
+set_target_properties(${CURRENT_PROJ_NAME} PROPERTIES LINK_FLAGS "/ignore:4099")
 if(OPT_BOOST_ENABLED)
 set(CMAKE_PREFIX_PATH $ENV{LIB_BOOST_DIR})
 find_package(Boost 1.81 REQUIRED)
