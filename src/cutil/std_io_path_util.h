@@ -8,7 +8,7 @@
 
 #define __PATH_SEPERATOR__ L';'
 
- CUTIL_EXPORT std::vector<std::wstring> path_split(const std::wstring &data);
- CUTIL_EXPORT int path_compare(const std::wstring &left, const std::wstring &right);
- CUTIL_EXPORT std::wstring path_join(std::vector<std::wstring> items);
- CUTIL_EXPORT std::wstring path_norm(const std::wstring &path);
+ __CUTIL_EXPORT__ std::vector<std::wstring> path_split(const std::wstring &data);
+ __CUTIL_EXPORT__ int path_compare(const std::wstring &left, const std::wstring &right);
+ __CUTIL_EXPORT__ std::wstring path_join(std::vector<std::wstring> items);
+ __CUTIL_EXPORT__ std::wstring path_norm(const std::wstring &path);

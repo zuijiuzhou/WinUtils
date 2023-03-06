@@ -5,13 +5,13 @@ set(CURRENT_PROJ_NAME EnvVarEditor)
 
 set(CMAKE_CXX_STANDARD 20)
 add_definitions(-DUNICODE -D_UNICODE)
-add_definitions(-DCUITL_STATIC)
+add_definitions(-D__CUITL_STATIC__)
 add_definitions(-D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS)
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
-FILE(GLOB SRC_HEADER "./*.h")
-FILE(GLOB SRC_CPP "./*.cpp")
-FILE(GLOB SRC_RC "./*.rc")
+FILE(GLOB SRC_HEADER "*.h")
+FILE(GLOB SRC_CPP "*.cpp")
+FILE(GLOB SRC_RC "*.rc")
 
 option(OPT_BOOST_ENABLED "是否启用BOOST" OFF)
 

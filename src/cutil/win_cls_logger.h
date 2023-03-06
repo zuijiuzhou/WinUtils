@@ -14,7 +14,7 @@ enum MessageType
 };
 
 __TSTR_FUNC__ void clslog(const TStr &msg, MessageType type);
-CUTIL_EXPORT void clslog(const char *sz_msg, MessageType type);
-CUTIL_EXPORT void clslog(const wchar_t *sz_msg, MessageType type);
-CUTIL_EXPORT void clserr(const char *sz_err, const char *sz_inner_err);
+__CUTIL_EXPORT__ void clslog(const char *sz_msg, MessageType type);
+__CUTIL_EXPORT__ void clslog(const wchar_t *sz_msg, MessageType type);
+__CUTIL_EXPORT__ void clserr(const char *sz_err, const char *sz_inner_err);
 

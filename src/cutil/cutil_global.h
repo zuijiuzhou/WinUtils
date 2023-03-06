@@ -1,10 +1,10 @@
 #pragma once
-#ifndef CUITL_STATIC
-#ifdef CUTIL_EXPORTS
-#define CUTIL_EXPORT __declspec(dllexport)
+#ifndef __CUITL_STATIC__
+#ifdef __CUTIL_EXPORTS__
+#define __CUTIL_EXPORT__ __declspec(dllexport)
 #else 
-#define CUTIL_EXPORT __declspec(dllimport)
+#define __CUTIL_EXPORT__ __declspec(dllimport)
 #endif
 #else
-#define CUTIL_EXPORT
+#define __CUTIL_EXPORT__
 #endif
